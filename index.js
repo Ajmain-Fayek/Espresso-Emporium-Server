@@ -33,10 +33,15 @@ async function run() {
         await client.connect();
 
         // ADD Collection
-        const collection = client.db("Expresso_Emperium").collection("coffees");
+        const coffeeCollection = client
+            .db("Expresso_Emperium")
+            .collection("coffees");
+        const userCollection = client
+            .db("Expresso_Emperium")
+            .collection("users");
 
         app.get("/coffees", async (req, res) => {
-            const cursor = collection.find();
+            const cursor = coffeeCollection.find();
             const result = await cursor.toArray();
             res.send(result);
         });
@@ -44,14 +49,14 @@ async function run() {
         app.get("/coffees/:id", async (req, res) => {
             const id = req.params.id;
             const query = { _id: new ObjectId(id) };
-            const result = await collection.findOne(query);
+            const result = await coffeeCollection.findOne(query);
             res.send(result);
         });
 
         app.post("/coffees", async (req, res) => {
             const newCoffee = req.body;
-            console.log(newCoffee);
-            const result = await collection.insertOne(newCoffee);
+            // console.log(newCoffee);
+            const result = await coffeeCollection.insertOne(newCoffee);
             res.send(result);
         });
 
@@ -72,7 +77,7 @@ async function run() {
                     supplier,
                 },
             };
-            const result = await collection.updateOne(
+            const result = await coffeeCollection.updateOne(
                 filter,
                 updatedCoffee,
                 options
@@ -83,7 +88,15 @@ async function run() {
         app.delete("/coffees/:id", async (req, res) => {
             const id = req.params.id;
             const query = { _id: new ObjectId(id) };
-            const result = await collection.deleteOne(query);
+            const result = await coffeeCollection.deleteOne(query);
+            res.send(result);
+        });
+
+        // Users Related APIs
+        app.post("/users", async (req, res) => {
+            const newUser = req.body;
+            // console.log(newUser);
+            const result = await userCollection.insertOne(newUser);
             res.send(result);
         });
 
