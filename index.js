@@ -15,7 +15,10 @@ const app = express();
 // Use Middleware
 app.use(
     cors({
-        origin: ["https://espresso-emporium-547bd.web.app"],
+        origin: [
+            "https://espresso-emporium-547bd.web.app",
+            "https://espresso-emporium-coffee-store.netlify.app/",
+        ],
     })
 );
 app.use(express.json());
