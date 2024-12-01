@@ -17,7 +17,7 @@ app.use(
     cors({
         origin: [
             "https://espresso-emporium-547bd.web.app",
-            "https://espresso-emporium-coffee-store.netlify.app/",
+            "https://espresso-emporium-coffee-store.netlify.app",
         ],
     })
 );
