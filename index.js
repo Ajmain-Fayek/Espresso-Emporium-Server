@@ -13,7 +13,11 @@ const port = process.env.PORT || 5000;
 const app = express();
 
 // Use Middleware
-app.use(cors());
+app.use(
+    cors({
+        origin: ["https://espresso-emporium-547bd.web.app"],
+    })
+);
 app.use(express.json());
 
 // DB Connection String
