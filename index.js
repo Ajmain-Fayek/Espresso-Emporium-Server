@@ -18,6 +18,7 @@ app.use(
         origin: [
             "https://espresso-emporium-547bd.web.app",
             "https://espresso-emporium-coffee-store.netlify.app",
+            "https://espresso-emporium-547bd.firebaseapp.com",
         ],
     })
 );
@@ -36,7 +37,10 @@ const client = new MongoClient(uri, {
 });
 async function run() {
     try {
-        // connect the client to the server (optional starting in v4.7)
+        /**
+         * Connect the client to the server for local Development
+         * Comment below code before deployeing into vercel
+         **/
         // await client.connect();
 
         // ADD Collection
@@ -107,7 +111,10 @@ async function run() {
             res.send(result);
         });
 
-        // send a ping to confirm a successfull connection
+        /**
+         * Send a ping to confirm a successfull connection
+         * Comment the below codes befor deploying into Vercel
+         */
         // await client.db("admin").command({ ping: 1 });
         // console.log(
         //     "Pinged your deployment. You successfully connected to MongoDB!"
