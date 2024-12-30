@@ -1,10 +1,9 @@
+// Import Environment Variable Reader
+require("dotenv").config();
 const express = require("express");
 
 // Import cors Middleware
 const cors = require("cors");
-
-// Import Environment Variable Reader
-require("dotenv").config();
 
 // Import Mongodb client and table api server version
 const { MongoClient, ServerApiVersion, ObjectId } = require("mongodb");
